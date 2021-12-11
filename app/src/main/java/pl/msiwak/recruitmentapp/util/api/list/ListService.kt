@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface ListService {
 
-    @GET("/recruitment-taski")
+    @GET("/recruitment-task")
     fun getData(): Single<ArrayList<ServerResponseItem>>
 
 }

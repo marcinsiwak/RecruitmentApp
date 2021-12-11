@@ -25,8 +25,21 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            if (BuildConfig.DEBUG) {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .build()
@@ -43,7 +56,6 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(
-//        configuration: Configuration,
         okHttpClient: OkHttpClient,
         gson: Gson
     ): Retrofit {

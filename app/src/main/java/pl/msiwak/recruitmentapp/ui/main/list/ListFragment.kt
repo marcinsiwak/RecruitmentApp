@@ -32,10 +32,16 @@ class ListFragment : BaseFragment(){
     ): View {
         binding = FragmentListBinding.inflate(inflater, container, false)
 
+        setAdapter()
+        initObservers()
+
         mViewModel.onInit()
 
-        initObservers()
         return binding.root
+    }
+
+    private fun setAdapter(){
+        binding.listRv.adapter = ListAdapter()
     }
 
     private fun initObservers() {
@@ -48,6 +54,9 @@ class ListFragment : BaseFragment(){
 
     private fun handleEvent(event: ListEvents?) {
         when (event) {
+            is ListEvents.InitAdapter -> {
+                (binding.listRv.adapter as ListAdapter).setData(event.list)
+            }
 
         }
     }
