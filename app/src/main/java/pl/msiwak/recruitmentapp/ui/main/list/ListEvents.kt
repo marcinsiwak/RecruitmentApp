@@ -1,4 +1,4 @@
-package pl.msiwak.recruitmentapp.ui.list
+package pl.msiwak.recruitmentapp.ui.main.list
 
 import pl.msiwak.recruitmentapp.ui.base.BaseEvent
 
