@@ -12,7 +12,10 @@ class GetDataUseCase @Inject constructor(private val listRepo: ListRepo) {
     fun getData(): Single<List<ListItem>> {
         return listRepo.getData()
             .observeOn(AndroidSchedulers.mainThread())
-            .map { it.map { serverResponseItem -> serverResponseItem.toListItem() } }
+            .map {
+                it.sortedBy { serverResponseItem -> serverResponseItem.orderId }
+                    .map { serverResponseItem -> serverResponseItem.toListItem() }
+            }
     }
 
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class ListRepoImpl @Inject constructor(private val listService: ListService) : ListRepo {
 
-    override fun getData(): Single<ArrayList<ServerResponseItem>> {
+    override fun getData(): Single<List<ServerResponseItem>> {
         return listService.getData().subscribeOn(Schedulers.io())
     }
 }

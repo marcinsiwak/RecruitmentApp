@@ -15,7 +15,6 @@ class ListViewModel @Inject constructor(private val getDataUseCase: GetDataUseCa
             {
                 sendEvent(ListEvents.InitAdapter(it))
             }, {
-                val out = it
 
             }).addTo(compositeDisposable)
     }

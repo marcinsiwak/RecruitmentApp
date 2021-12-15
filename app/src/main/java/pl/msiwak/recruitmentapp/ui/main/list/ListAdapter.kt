@@ -2,6 +2,7 @@ package pl.msiwak.recruitmentapp.ui.main.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import pl.msiwak.recruitmentapp.common.loadImage
 import pl.msiwak.recruitmentapp.data.ListItem
 import pl.msiwak.recruitmentapp.databinding.ItemListBinding
 import pl.msiwak.recruitmentapp.ui.base.BaseAdapter
@@ -29,6 +30,9 @@ class ListAdapter : BaseAdapter<ListItem>() {
         override fun bind(item: ListItem, listener: ((Int) -> Unit)?) {
             binding.apply {
                 itemListTv.text = item.title
+                itemListDescriptionTv.text = item.description
+                itemListDateTv.text = item.date
+                itemListIv.loadImage(item.imageUrl)
             }
 //            binding.galleryItem.apply {
 //                Glide.with(context).load(item.imageUrl).into(this)

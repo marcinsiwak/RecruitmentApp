@@ -5,5 +5,5 @@ import pl.msiwak.recruitmentapp.data.ServerResponseItem
 
 interface ListRepo {
 
-    fun getData(): Single<ArrayList<ServerResponseItem>>
+    fun getData(): Single<List<ServerResponseItem>>
 }

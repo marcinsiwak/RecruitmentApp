@@ -1,7 +1,10 @@
 package pl.msiwak.recruitmentapp.common
 
+import android.widget.ImageView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import pl.msiwak.recruitmentapp.data.ListItem
 import pl.msiwak.recruitmentapp.data.ServerResponseItem
 import pl.msiwak.recruitmentapp.util.error.Failure
@@ -24,4 +27,12 @@ inline fun <T : Failure, L : LiveData<Event<T>>> LifecycleOwner.observeFailure(
 
 fun ServerResponseItem.toListItem(): ListItem {
     return ListItem(title, description, modificationDate, image_url)
+}
+
+fun ImageView.loadImage(imageUrl: String) {
+    Glide.with(this.context)
+        .load(imageUrl)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .error(android.R.drawable.stat_notify_error)
+        .into(this)
 }
