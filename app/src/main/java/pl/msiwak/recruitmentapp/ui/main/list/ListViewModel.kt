@@ -11,7 +11,11 @@ class ListViewModel @Inject constructor(private val getDataUseCase: GetDataUseCa
     BaseViewModel<ListEvents>() {
 
     fun onInit() {
-        getDataUseCase.getData().subscribe(
+        getDataUseCase.getData()
+            .doOnSubscribe {
+                //todo add loader
+            }
+            .subscribe(
             {
                 sendEvent(ListEvents.InitAdapter(it))
             }, {
