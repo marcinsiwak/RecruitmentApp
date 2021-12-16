@@ -4,6 +4,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.kotlin.addTo
 import pl.msiwak.recruitmentapp.domain.GetDataUseCase
 import pl.msiwak.recruitmentapp.ui.base.BaseViewModel
+import pl.msiwak.recruitmentapp.ui.main.browser.BrowserEvents
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +22,10 @@ class ListViewModel @Inject constructor(private val getDataUseCase: GetDataUseCa
             }, {
 
             }).addTo(compositeDisposable)
+    }
+
+    fun onItemClicked(url: String) {
+        sendEvent(ListEvents.OpenBrowser(url))
     }
 
 

@@ -33,11 +33,8 @@ class ListAdapter : BaseAdapter<ListItem>() {
                 itemListDescriptionTv.text = item.description
                 itemListDateTv.text = item.date
                 itemListIv.loadImage(item.imageUrl)
+                root.setOnClickListener { listener?.invoke(adapterPosition) }
             }
-//            binding.galleryItem.apply {
-//                Glide.with(context).load(item.imageUrl).into(this)
-//                setOnClickListener { listener?.invoke(adapterPosition) }
-//            }
         }
     }
 

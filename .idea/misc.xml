@@ -6,6 +6,11 @@
         <entry key="..\:/Users/marci/AndroidStudioProjects/RecruitmentApp/app/src/main/res/layout/activity_main.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/marci/AndroidStudioProjects/RecruitmentApp/app/src/main/res/layout/fragment_list.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/marci/AndroidStudioProjects/RecruitmentApp/app/src/main/res/layout/item_list.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/drawable/bg_white.xml" value="0.2203125" />
+        <entry key="app/src/main/res/drawable/bg_white_disabled.xml" value="0.2203125" />
+        <entry key="app/src/main/res/drawable/bg_white_ripple.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/fragment_browser.xml" value="0.3651041666666667" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.3651041666666667" />
         <entry key="app/src/main/res/layout/item_list.xml" value="0.25" />
       </map>
     </option>
