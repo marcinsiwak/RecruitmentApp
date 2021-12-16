@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import pl.msiwak.recruitmentapp.common.observeEvent
 import pl.msiwak.recruitmentapp.common.observeFailure
@@ -23,15 +24,12 @@ class BrowserFragment : BaseFragment() {
     companion object {
         const val TAG = "BrowserFragment"
         const val URL = "URL"
-
-        fun newInstance(url: String) = BrowserFragment().apply {
-            bundleOf(URL to url)
-        }
     }
 
     private lateinit var binding: FragmentBrowserBinding
 
     private val mViewModel: BrowserViewModel by viewModels()
+    private val args by navArgs<BrowserFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -10,4 +10,6 @@ import javax.inject.Inject
 class BrowserViewModel @Inject constructor() :
     BaseViewModel<BrowserEvents>() {
 
+
+
 }
