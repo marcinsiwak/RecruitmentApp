@@ -64,14 +64,6 @@ class ListFragment : BaseFragment() {
 
     private fun handleEvent(event: ListEvents?) {
         when (event) {
-            is ListEvents.InitAdapter -> {
-                (binding.listRv.adapter as ListAdapter).apply {
-                    setData(event.list)
-                    setListener { pos ->
-                        mViewModel.onItemClicked(event.list[pos].url)
-                    }
-                }
-            }
             is ListEvents.OpenBrowser -> {
                 val bundle = bundleOf(URL to event.url)
                 findNavController().navigate(R.id.action_listFragment_to_browserFragment, bundle)

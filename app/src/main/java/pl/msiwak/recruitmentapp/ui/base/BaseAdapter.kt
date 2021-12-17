@@ -10,13 +10,13 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseHolder<T>>() {
             notifyDataSetChanged()
         }
 
-    protected var onRecyclerListener: ((Int) -> Unit)? = null
+    protected var onRecyclerListener: OnRecyclerListener? = null
 
     fun setData(items: List<T>) {
         this.items = items
     }
 
-    fun setListener(listener: (pos: Int) -> Unit) {
+    fun setListener(listener: OnRecyclerListener?) {
         this.onRecyclerListener = listener
     }
 

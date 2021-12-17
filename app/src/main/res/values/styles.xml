@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Empty">
+        <item name="android:layout_width">@dimen/empty</item>
+        <item name="android:layout_height">@dimen/empty</item>
+    </style>
+
+    <style name="EmptyWrap">
+        <item name="android:layout_width">@dimen/empty</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapEmpty">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/empty</item>
+    </style>
+
+    <style name="MatchWrap" parent="Match">
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchEmpty">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/empty</item>
+    </style>
+
+    <style name="WrapMatch" parent="Wrap">
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="CircularProgress" parent="Wrap">
+        <item name="android:indeterminate">true</item>
+        <item name="hideAnimationBehavior">outward</item>
+        <item name="indicatorColor">@color/black</item>
+        <item name="trackCornerRadius">5dp</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/grey</item>
+    </style>
+</resources>

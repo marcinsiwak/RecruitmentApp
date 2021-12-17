@@ -11,6 +11,9 @@ abstract class BaseViewModel<T: BaseEvent>: ViewModel() {
 
     protected val compositeDisposable = CompositeDisposable()
 
+    val progressVisibility = MutableLiveData(false)
+    val toolbarTitle = MutableLiveData("")
+
     protected val mErrorEvent: MutableLiveData<Event<Failure>> = MutableLiveData()
     val errorEvent : LiveData<Event<Failure>> = mErrorEvent
 
