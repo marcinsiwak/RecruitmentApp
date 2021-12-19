@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(private val getDataUseCase: GetDataUseCase) :
     BaseViewModel<ListEvents>() {
 
-    val listData = MutableLiveData<List<ListItem>>(emptyList())
+    val listData = MutableLiveData<List<ListItem>>()
 
     fun onInit() {
         getDataUseCase.getData()

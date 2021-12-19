@@ -51,4 +51,25 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/grey</item>
     </style>
+
+    <style name="Progressbar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">3dp</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateTint">@color/black</item>
+    </style>
+
+    <style name="ToolbarIcon" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">@dimen/toolbar_btn_size</item>
+        <item name="android:layout_height">@dimen/toolbar_btn_size</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="rippleColor">@color/colorRipple</item>
+        <item name="iconTint">@color/black</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/empty</item>
+        <item name="iconSize">@dimen/toolbar_icon_size</item>
+        <item name="android:insetTop">@dimen/empty</item>
+        <item name="android:insetBottom">@dimen/empty</item>
+    </style>
 </resources>

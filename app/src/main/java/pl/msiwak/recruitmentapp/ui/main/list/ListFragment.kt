@@ -25,12 +25,6 @@ import pl.msiwak.recruitmentapp.util.error.Failure
 @AndroidEntryPoint
 class ListFragment : BaseFragment() {
 
-    companion object {
-        const val TAG = "ListFragment"
-
-        fun newInstance() = ListFragment()
-    }
-
     private lateinit var binding: FragmentListBinding
 
     private val mViewModel: ListViewModel by viewModels()
@@ -40,18 +34,17 @@ class ListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentListBinding.inflate(inflater, container, false)
+        binding = FragmentListBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = mViewModel
+            listRv.adapter = ListAdapter()
+        }
 
-        setAdapter()
         initObservers()
 
         mViewModel.onInit()
 
         return binding.root
-    }
-
-    private fun setAdapter() {
-        binding.listRv.adapter = ListAdapter()
     }
 
     private fun initObservers() {
@@ -65,8 +58,8 @@ class ListFragment : BaseFragment() {
     private fun handleEvent(event: ListEvents?) {
         when (event) {
             is ListEvents.OpenBrowser -> {
-                val bundle = bundleOf(URL to event.url)
-                findNavController().navigate(R.id.action_listFragment_to_browserFragment, bundle)
+                val action = ListFragmentDirections.actionListFragmentToBrowserFragment(event.url)
+                findNavController().navigate(action)
             }
         }
     }

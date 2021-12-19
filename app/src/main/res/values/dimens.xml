@@ -8,4 +8,6 @@
 
     <dimen name="empty">0dp</dimen>
 
+    <dimen name="toolbar_btn_size">40dp</dimen>
+    <dimen name="toolbar_icon_size">16dp</dimen>
 </resources>

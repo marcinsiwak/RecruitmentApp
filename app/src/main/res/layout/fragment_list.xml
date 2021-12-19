@@ -3,32 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="pl.msiwak.recruitmentapp.ui.main.list.ListViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout style="@style/Match">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/Match">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listRv"
-        style="@style/Match"
-        data="@{viewModel.listData}"
-        onRecyclerClick="@{viewModel::onItemClicked}"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listRv"
+            style="@style/Match"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:data="@{viewModel.listData}"
+            app:onRecyclerClick="@{viewModel::onItemClicked}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/circularPb"
-        style="@style/CircularProgress"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/circularPb"
+            style="@style/CircularProgress"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

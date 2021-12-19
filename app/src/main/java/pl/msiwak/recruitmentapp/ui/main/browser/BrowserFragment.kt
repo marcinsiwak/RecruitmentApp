@@ -6,23 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import pl.msiwak.recruitmentapp.common.observeEvent
 import pl.msiwak.recruitmentapp.common.observeFailure
 import pl.msiwak.recruitmentapp.databinding.FragmentBrowserBinding
-import pl.msiwak.recruitmentapp.databinding.FragmentListBinding
 import pl.msiwak.recruitmentapp.ui.base.BaseFragment
-import pl.msiwak.recruitmentapp.ui.main.list.ListAdapter
 import pl.msiwak.recruitmentapp.util.error.Failure
 
 @AndroidEntryPoint
 class BrowserFragment : BaseFragment() {
 
     companion object {
-        const val TAG = "BrowserFragment"
         const val URL = "URL"
     }
 
@@ -40,11 +36,7 @@ class BrowserFragment : BaseFragment() {
 
         initObservers()
 
-//        mViewModel.onInit()
-
-        arguments?.getString(URL)?.let {
-            initWebView(it)
-        }
+        initWebView(args.url)
 
         return binding.root
     }
@@ -69,7 +61,7 @@ class BrowserFragment : BaseFragment() {
         }
     }
 
-    private fun initWebView(url: String){
+    private fun initWebView(url: String) {
         binding.browserWv.run {
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
