@@ -1,8 +1,13 @@
 package pl.msiwak.recruitmentapp.util.binding
 
+import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.Button
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
+import pl.msiwak.recruitmentapp.common.hide
+import pl.msiwak.recruitmentapp.common.show
 import pl.msiwak.recruitmentapp.ui.base.BaseAdapter
 import pl.msiwak.recruitmentapp.ui.base.OnRecyclerListener
 
@@ -25,8 +30,13 @@ fun setRecyclerListener(recyclerView: RecyclerView, onRecyclerListener: OnRecycl
 @BindingAdapter("isVisible")
 fun setIsVisible(view: View, isVisible: Boolean) {
     if (isVisible) {
-        view.visibility = View.VISIBLE
+        view.show()
     } else {
-        view.visibility = View.GONE
+        view.hide()
     }
+}
+
+@BindingAdapter("iconDrawable")
+fun setIcon(button: MaterialButton, drawable: Drawable?) {
+    button.icon = drawable
 }

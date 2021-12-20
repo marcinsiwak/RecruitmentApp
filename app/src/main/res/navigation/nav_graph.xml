@@ -21,5 +21,8 @@
             android:name="url"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_browserFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

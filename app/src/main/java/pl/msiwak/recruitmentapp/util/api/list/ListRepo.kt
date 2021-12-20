@@ -7,4 +7,5 @@ import pl.msiwak.recruitmentapp.data.ServerResponseItem
 interface ListRepo {
 
     fun getData(): Single<List<ListItem>>
+    fun getDataFromLocalDb(): Single<List<ListItem>>
 }

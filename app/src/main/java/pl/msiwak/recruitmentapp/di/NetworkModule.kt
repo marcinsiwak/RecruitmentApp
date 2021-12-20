@@ -13,6 +13,8 @@ import pl.msiwak.recruitmentapp.util.api.ApiServiceGenerator
 import pl.msiwak.recruitmentapp.util.api.ApiServiceGeneratorImpl
 import pl.msiwak.recruitmentapp.util.api.list.ListService
 import pl.msiwak.recruitmentapp.util.config.REQUEST_TIMEOUT
+import pl.msiwak.recruitmentapp.util.db.AppDB
+import pl.msiwak.recruitmentapp.util.db.DataDao
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -47,11 +49,8 @@ object NetworkModule {
 
     @Provides
     fun provideGson(): Gson =
-        GsonBuilder()
-//            .registerTypeAdapter()
-            .create()
+        GsonBuilder().create()
 
-    //todo
 
     @Provides
     @Singleton

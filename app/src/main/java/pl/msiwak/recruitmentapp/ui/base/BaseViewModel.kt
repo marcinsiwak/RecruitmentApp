@@ -1,9 +1,11 @@
 package pl.msiwak.recruitmentapp.ui.base
 
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import pl.msiwak.recruitmentapp.R
 import pl.msiwak.recruitmentapp.util.error.Failure
 import pl.msiwak.recruitmentapp.util.event.Event
 
@@ -13,6 +15,7 @@ abstract class BaseViewModel<T: BaseEvent>: ViewModel() {
 
     val progressVisibility = MutableLiveData(false)
     val toolbarTitle = MutableLiveData("")
+    val toolbarIcon = MutableLiveData<Drawable>()
 
     protected val mErrorEvent: MutableLiveData<Event<Failure>> = MutableLiveData()
     val errorEvent : LiveData<Event<Failure>> = mErrorEvent
@@ -27,5 +30,7 @@ abstract class BaseViewModel<T: BaseEvent>: ViewModel() {
     fun sendError(event: Failure){
         mErrorEvent.value = Event(event)
     }
+
+    open fun onBackClicked() = Unit
 
 }

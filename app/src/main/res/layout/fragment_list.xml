@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,25 +12,33 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/Match">
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:baseViewModel="@{(pl.msiwak.recruitmentapp.ui.base.BaseViewModel) viewModel}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listRv"
-            style="@style/Match"
+            style="@style/MatchEmpty"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:data="@{viewModel.listData}"
             app:onRecyclerClick="@{viewModel::onItemClicked}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/circularPb"
-            style="@style/CircularProgress"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toolbarRefreshBtn"
+            style="@style/ToolbarIcon"
+            android:onClick="@{() -> viewModel.onRefreshClicked()}"
+            app:icon="@drawable/ic_refresh"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
