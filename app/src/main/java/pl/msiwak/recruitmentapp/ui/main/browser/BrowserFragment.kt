@@ -20,6 +20,10 @@ import pl.msiwak.recruitmentapp.util.error.Failure
 @AndroidEntryPoint
 class BrowserFragment : BaseFragment() {
 
+    companion object {
+        const val BUNDLE_URL = "url"
+    }
+
     private lateinit var binding: FragmentBrowserBinding
 
     private val mViewModel: BrowserViewModel by viewModels()
@@ -62,6 +66,7 @@ class BrowserFragment : BaseFragment() {
 
     private fun handleError(event: Failure?) {
         when (event) {
+
         }
     }
 
@@ -72,8 +77,6 @@ class BrowserFragment : BaseFragment() {
                     mViewModel.onPageLoaded()
                 }
             }
-
-            settings.javaScriptEnabled = true
             settings.loadWithOverviewMode = true
             settings.setSupportMultipleWindows(false)
             loadUrl(url)

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RecruitmentApp</string>
+
+    <string name="label_list">List</string>
+    <string name="label_browser">Browser</string>
+
+    <string name="error">Something went wrong</string>
 </resources>

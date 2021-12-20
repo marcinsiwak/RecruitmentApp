@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_list"
+    app:startDestination="@id/browserFragmentMD">
+
+    <fragment
+        android:id="@+id/browserFragmentMD"
+        android:name="pl.msiwak.recruitmentapp.ui.main.browser.BrowserFragment"
+        android:label="BrowserFragment">
+
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+</navigation>

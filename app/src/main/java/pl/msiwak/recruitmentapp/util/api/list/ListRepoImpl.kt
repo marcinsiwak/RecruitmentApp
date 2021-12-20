@@ -28,7 +28,6 @@ class ListRepoImpl @Inject constructor(
             }
     }
 
-
     private fun getDataFromServer(): Single<List<ListItem>> {
         return listService.getData()
             .subscribeOn(Schedulers.io())

@@ -13,7 +13,7 @@ class BrowserViewModel @Inject constructor(resourceProvider: ResourceProvider) :
     BaseViewModel<BrowserEvents>() {
 
     init {
-        toolbarTitle.value = "Browser"
+        toolbarTitle.value = resourceProvider.getString(R.string.label_browser)
         toolbarIcon.value = resourceProvider.getDrawable(R.drawable.ic_back)
     }
 
