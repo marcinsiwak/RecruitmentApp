@@ -13,19 +13,19 @@ class ListRepoImpl @Inject constructor(
 ) : ListRepo {
 
     override fun getData(): Single<List<ListItem>> {
-        return listService.getData().subscribeOn(Schedulers.io())
-            .map {
-                it.sortedBy { serverResponseItem -> serverResponseItem.orderId }
-                    .map { serverResponseItem -> serverResponseItem.toListItem() }
-            }.doOnSuccess {
-                dataDao.insertAll(it)
-            }
+        return getDataFromServer()
     }
 
     override fun getDataFromLocalDb(): Single<List<ListItem>> {
         return dataDao.getData()
             .subscribeOn(Schedulers.io())
-
+            .flatMap {
+                if (it.isEmpty()) {
+                    getDataFromServer()
+                } else {
+                    Single.just(it)
+                }
+            }
     }
 
 
@@ -33,8 +33,10 @@ class ListRepoImpl @Inject constructor(
         return listService.getData()
             .subscribeOn(Schedulers.io())
             .map {
-                it.sortedBy { serverResponseItem -> serverResponseItem.orderId }
+                val list = it.sortedBy { serverResponseItem -> serverResponseItem.orderId }
                     .map { serverResponseItem -> serverResponseItem.toListItem() }
+                dataDao.insertAll(list)
+                list
             }
     }
 }

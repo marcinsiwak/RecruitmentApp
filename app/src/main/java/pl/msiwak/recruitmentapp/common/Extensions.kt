@@ -38,12 +38,11 @@ inline fun <T : Failure, L : LiveData<Event<T>>> LifecycleOwner.observeFailure(
 
 fun ServerResponseItem.toListItem(): ListItem {
     return ListItem(
-        orderId,
-        title,
-        description.substringBefore(HTTP_STRING),
-        DateHelper.parseDate(modificationDate),
-        "$HTTP_STRING${description.substringAfter(HTTP_STRING)}",
-        image_url
+        title = title,
+        description = description.substringBefore(HTTP_STRING),
+        date = DateHelper.parseDate(modificationDate),
+        url = "$HTTP_STRING${description.substringAfter(HTTP_STRING)}",
+        imageUrl = image_url
     )
 }
 

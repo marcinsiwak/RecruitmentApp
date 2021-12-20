@@ -15,5 +15,5 @@ interface DataDao {
     fun getData(): Single<List<ListItem>>
 
     @Insert
-    fun insertAll(list: List<ListItem>): Completable
+    fun insertAll(item: List<ListItem>)
 }
