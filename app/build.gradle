@@ -41,6 +41,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 ext {
@@ -54,6 +58,9 @@ ext {
     okHttp_version = '4.4.1'
     nav_version = "2.3.5"
     room_version = "2.4.0"
+    mockito_version = "3.7.7"
+    junit_version = "4.13.2"
+    test_runner_version = "1.4.0"
 }
 
 dependencies {
@@ -96,4 +103,11 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-rxjava3:$room_version")
+
+    //mockito
+    testImplementation("androidx.test:core:$test_runner_version")
+    testImplementation("org.mockito:mockito-core:$mockito_version")
+    testImplementation 'org.mockito:mockito-inline:3.7.7'
+    testImplementation "android.arch.core:core-testing:1.1.1"
+
 }
