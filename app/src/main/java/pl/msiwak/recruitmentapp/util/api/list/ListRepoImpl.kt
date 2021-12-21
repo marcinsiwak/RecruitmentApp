@@ -14,11 +14,12 @@ class ListRepoImpl @Inject constructor(
 
     override fun getData(): Single<List<ListItem>> {
         return getDataFromServer()
+            .subscribeOn(Schedulers.io())
+
     }
 
     override fun getDataFromLocalDb(): Single<List<ListItem>> {
         return dataDao.getData()
-            .subscribeOn(Schedulers.io())
             .flatMap {
                 if (it.isEmpty()) {
                     getDataFromServer()
@@ -26,11 +27,11 @@ class ListRepoImpl @Inject constructor(
                     Single.just(it)
                 }
             }
+            .subscribeOn(Schedulers.io())
     }
 
     private fun getDataFromServer(): Single<List<ListItem>> {
         return listService.getData()
-            .subscribeOn(Schedulers.io())
             .map {
                 val list = it.sortedBy { serverResponseItem -> serverResponseItem.orderId }
                     .map { serverResponseItem -> serverResponseItem.toListItem() }

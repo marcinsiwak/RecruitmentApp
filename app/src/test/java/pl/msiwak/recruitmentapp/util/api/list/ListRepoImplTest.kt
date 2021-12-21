@@ -44,9 +44,8 @@ class ListRepoImplTest : BaseTest(){
         `when`(dataDao.getData()).thenReturn(Single.just(listOf(mockListItem)))
 
         repo.getDataFromLocalDb()
-        dataDao.getData().subscribe()
 
-        verify(dataDao, times(2)).getData()
+        verify(dataDao, times(1)).getData()
     }
 
 }
