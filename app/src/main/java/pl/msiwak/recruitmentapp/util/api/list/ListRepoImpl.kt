@@ -15,13 +15,12 @@ class ListRepoImpl @Inject constructor(
     override fun getData(): Single<List<ListItem>> {
         return getDataFromServer()
             .subscribeOn(Schedulers.io())
-
     }
 
     override fun getDataFromLocalDb(): Single<List<ListItem>> {
         return dataDao.getData()
             .flatMap {
-                if (it.isEmpty()) {
+                if (it.isNullOrEmpty()) {
                     getDataFromServer()
                 } else {
                     Single.just(it)

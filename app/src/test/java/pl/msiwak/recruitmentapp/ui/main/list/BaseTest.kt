@@ -13,7 +13,7 @@ import org.mockito.stubbing.OngoingStubbing
 abstract class BaseTest {
 
     @Before
-    open fun setup() = MockitoAnnotations.openMocks(this).close()
+    open fun setup() = MockitoAnnotations.initMocks(this)
 
     protected fun trampolineRxPlugin() {
         RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }

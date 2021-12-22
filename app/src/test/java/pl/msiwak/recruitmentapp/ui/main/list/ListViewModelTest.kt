@@ -1,22 +1,21 @@
 package pl.msiwak.recruitmentapp.ui.main.list
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.reactivex.rxjava3.core.Single
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.*
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import pl.msiwak.recruitmentapp.data.ListItem
 import pl.msiwak.recruitmentapp.domain.GetDataFromLocalDbUseCase
 import pl.msiwak.recruitmentapp.domain.GetDataUseCase
 import pl.msiwak.recruitmentapp.util.config.ResourceProvider
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-
-import org.junit.Rule
 
 class ListViewModelTest : BaseTest() {
 
-    @Rule @JvmField
+    @Rule
+    @JvmField
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
@@ -80,25 +79,28 @@ class ListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun onBackClicked(){
+    fun onBackClicked() {
         viewModel.onBackClicked()
 
         assertEquals(ListEvents.CloseApp, viewModel.event.value?.peekContent())
     }
 
     @Test
-    fun onItemClicked_large_screen(){
+    fun onItemClicked_large_screen() {
         `when`(resProvider.getBoolean(anyInt())).thenReturn(true)
         viewModel.listData.value = mockList
 
         viewModel.onItemClicked(0)
 
-        assertEquals("url", (viewModel.event.value?.peekContent() as ListEvents.OpenBrowserForLargeScreen).url)
+        assertEquals(
+            "url",
+            (viewModel.event.value?.peekContent() as ListEvents.OpenBrowserForLargeScreen).url
+        )
         verify(resProvider, times(1)).getBoolean(anyInt())
     }
 
     @Test
-    fun onItemClicked(){
+    fun onItemClicked() {
         `when`(resProvider.getBoolean(anyInt())).thenReturn(false)
         viewModel.listData.value = mockList
 

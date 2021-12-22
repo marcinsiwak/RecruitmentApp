@@ -66,7 +66,7 @@ class BrowserFragment : BaseFragment() {
 
     private fun handleError(event: Failure?) {
         when (event) {
-
+            else -> Unit
         }
     }
 
